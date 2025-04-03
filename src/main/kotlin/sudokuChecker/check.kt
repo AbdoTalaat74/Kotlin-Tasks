@@ -1,7 +1,57 @@
-package org.example
+package org.example.sudokuChecker
 
 
 fun main(){
+
+
+    check(
+        name = "board with invalid dimensions should return false",
+        result = isValidSudoku(board = arrayOf(
+            charArrayOf('5', '3', '-', '-', '7', '-', '-', '-'),
+            charArrayOf('6', '-', '-', '1', '9', '5', '-', '-', '-'),
+            charArrayOf('-', '9', '8', '-', '-', '-', '-', '6', '-'),
+            charArrayOf('8', '-', '-', '-', '6', '-', '-', '-', '3'),
+            charArrayOf('4', '-', '-', '8', '-', '3', '-', '-', '1'),
+            charArrayOf('7', '-', '-', '-', '2', '-', '-', '-', '6'),
+            charArrayOf('-', '6', '-', '-', '-', '-', '2', '8', '-'),
+            charArrayOf('-', '-', '-', '4', '1', '9', '-', '-', '5')
+        )),
+        correctResult = false
+    )
+
+
+    check(
+        name = "a board that has less than 17 clues return false",
+        result = isValidSudoku(board = arrayOf(
+            charArrayOf('5', '3', '-', '-', '7', '-', '-', '-', '-'),
+            charArrayOf('6', '-', '-', '1', '-', '-', '-', '-', '-'),
+            charArrayOf('-', '9', '-', '-', '-', '-', '-', '6', '-'),
+            charArrayOf('8', '-', '-', '-', '-', '-', '-', '-', '3'),
+            charArrayOf('4', '-', '-', '-', '-', '-', '-', '-', '-'),
+            charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '6'),
+            charArrayOf('-', '-', '-', '-', '-', '-', '2', '8', '-'),
+            charArrayOf('-', '-', '-', '4', '1', '-', '-', '-', '-'),
+            charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '9')
+        )),
+        correctResult = false
+    )
+
+    check(
+        name = "a board that has a cell that contains anything but 1-9 digit should return false",
+        result = isValidSudoku(board = arrayOf(
+            charArrayOf('5', 'a', '-', '-', '7', '-', '-', '-', '-'),
+            charArrayOf('6', '-', '-', '1', '9', '5', '-', '-', '-'),
+            charArrayOf('-', '9', '8', '-', '-', '-', '-', '6', '-'),
+            charArrayOf('8', '-', '-', '-', '6', '-', '-', '-', '3'),
+            charArrayOf('4', '-', '-', '8', '-', '3', '-', '-', '1'),
+            charArrayOf('7', '-', '-', '-', '2', '-', '-', '-', '6'),
+            charArrayOf('-', '6', '-', '-', '-', '-', '2', '8', '-'),
+            charArrayOf('-', '-', '-', '4', '1', '9', '-', '-', '5'),
+            charArrayOf('-', '-', '-', '-', '8', '-', '-', '7', '9')
+        )),
+        correctResult = false
+    )
+
     check(
         name = "valid complete sudoku board should return true",
         result = isValidSudoku(board = arrayOf(
@@ -18,22 +68,6 @@ fun main(){
         correctResult = true
     )
 
-    check(
-        name = "empty board should return true",
-        result = isValidSudoku(board = arrayOf(
-            charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
-            charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
-            charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
-            charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
-            charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
-            charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
-            charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
-            charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
-            charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '-')
-        )),
-        correctResult = true
-    )
-    
     check(
         name = "valid incomplete sudoku board should return true",
         result = isValidSudoku(board = arrayOf(
