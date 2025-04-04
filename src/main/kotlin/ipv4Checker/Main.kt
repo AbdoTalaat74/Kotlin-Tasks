@@ -33,7 +33,7 @@ fun isValidIPv4(ip: String): Boolean {
         // Parse segment as integer and check the range
         try {
             val value = segment.toInt()
-            if (value < 0 || value > 255) {
+            if (value !in 0.. 255) {
                 return false
             }
         } catch (e: NumberFormatException) {
