@@ -3,7 +3,7 @@ package ipv4Checker
 
 fun main() {
     check(
-        name = "when IP address is valid, it should return true",
+        name = "given a valid IP address when validated then it should return true",
         result = isValidIPv4("192.168.1.1"),
         correctResult = true
     )
@@ -18,7 +18,7 @@ fun main() {
 */
 
     check(
-        name = "when IP address has segments outside the range 0 to 255, it should return false",
+        name = "given an IP with a segment > 255 when validated then it should return false",
         result = isValidIPv4("192.168.1.256"),
         correctResult = false
     )
@@ -31,7 +31,7 @@ fun main() {
     "001.002.003.004" // Leading zeros in all segments
  */
     check(
-        name = "when IP address has leading zeros, it should return false",
+        name = "given an IP with leading zeros in segments when validated then it should return false",
         result = isValidIPv4("192.168.01.1"),
         correctResult = false
     )
@@ -43,7 +43,7 @@ fun main() {
     "192.168.1.0"
  */
     check(
-        name = "when IP address has single zero segments, it should return true",
+        name = "given an IP with single zero segments when validated then it should return true",
         result = isValidIPv4("192.0.1.1"),
         correctResult = true
     )
@@ -57,14 +57,14 @@ fun main() {
     ""
  */
     check(
-        name = "when IP address has less than 4 segments, it should return false",
+        name = "given an IP with fewer than 4 segments when validated then it should return false",
         result = isValidIPv4("192.168.1"),
         correctResult = false
     )
 
     check(
-        name = "when IP address has more than 4 segments, it should return false",
-        result = isValidIPv4("192.168.1.1"),
+        name = "given an IP with more than 4 segments when validated then it should return false",
+        result = isValidIPv4("192.168.1.1.1"),
         correctResult = false
     )
 
@@ -83,7 +83,7 @@ fun main() {
     "192.168.1.#"
  */
     check(
-        name = "when IP address has non-numeric characters, it should return false",
+        name = "given an IP with non-numeric characters when validated then it should return false",
         result = isValidIPv4("192.168.1.*"),
         correctResult = false
     )
@@ -97,7 +97,7 @@ fun main() {
 
  */
     check(
-        name = "when IP address has empty segments, it should return false",
+        name = "given an IP with empty segments when validated then it should return false",
         result = isValidIPv4("192.168.."),
         correctResult = false
     )
