@@ -1,30 +1,6 @@
-package org.example.sudokuChecker
+package sudokuChecker
 
 
-fun main() {
-
-
-
-
-
-    val board = arrayOf(
-        charArrayOf('5', '3', '-', '-', '7', '-', '-', '-', '-'),
-        charArrayOf('6', '-', '-', '1', '-', '-', '-', '-', '-'),
-        charArrayOf('-', '9', '-', '-', '-', '-', '-', '6', '-'),
-        charArrayOf('8', '-', '-', '-', '-', '-', '-', '-', '3'),
-        charArrayOf('4', '-', '-', '-', '-', '-', '-', '-', '-'),
-        charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '6'),
-        charArrayOf('-', '-', '-', '-', '-', '-', '2', '8', '-'),
-        charArrayOf('-', '-', '-', '4', '1', '-', '-', '-', '-'),
-        charArrayOf('-', '-', '-', '-', '-', '-', '-', '-', '9')
-    )
-
-
-
-    println(isValidSudoku(board))
-    println()
-
-}
 
 
 fun isValidSudokuInit(board: Array<CharArray>, subgridSize: Int = 3): Boolean {
@@ -35,7 +11,7 @@ fun isValidSudokuInit(board: Array<CharArray>, subgridSize: Int = 3): Boolean {
 
 fun isValidSudoku(board: Array<CharArray>, subgridSize: Int = 3): Boolean {
 
-    val n = board.size
+    val size = board.size
     val clues = mutableListOf<Char>()
 
     val boardSize = subgridSize * subgridSize
@@ -48,7 +24,6 @@ fun isValidSudoku(board: Array<CharArray>, subgridSize: Int = 3): Boolean {
 
     // Validate board characters
     for (row in board) {
-
         for (char in row) {
             if (char != '-' && (char < '1' || char > '9')) {
                 return false
@@ -57,7 +32,6 @@ fun isValidSudoku(board: Array<CharArray>, subgridSize: Int = 3): Boolean {
                 clues.add(char)
             }
         }
-
     }
 
 
@@ -84,17 +58,17 @@ fun isValidSudoku(board: Array<CharArray>, subgridSize: Int = 3): Boolean {
     }
 
     // Check columns
-    for (col in 0 until n) {
-        val column = List(n) { row ->
+    for (col in 0 until size) {
+        val column = List(size) { row ->
             board[row][col]
 
         }
         if (!isValidGroup(column)) return false
     }
 
-    // Check subgrids
-    for (startRow in 0 until n step subgridSize) {
-        for (startCol in 0 until n step subgridSize) {
+    // Check subgrid
+    for (startRow in 0 until size step subgridSize) {
+        for (startCol in 0 until size step subgridSize) {
             val subgrid = mutableListOf<Char>()
             for (i in 0 until subgridSize) {
                 for (j in 0 until subgridSize) {

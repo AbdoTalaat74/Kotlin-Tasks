@@ -1,11 +1,10 @@
-package org.example.sudokuChecker
+package sudokuChecker
 
 
 fun main(){
 
-
     check(
-        name = "board with invalid dimensions should return false",
+        name = "when board has invalid dimensions it should return false",
         result = isValidSudoku(board = arrayOf(
             charArrayOf('5', '3', '-', '-', '7', '-', '-', '-'),
             charArrayOf('6', '-', '-', '1', '9', '5', '-', '-', '-'),
@@ -21,7 +20,7 @@ fun main(){
 
 
     check(
-        name = "a board that has less than 17 clues return false",
+        name = "when board has less than 17 clues, it should return false",
         result = isValidSudoku(board = arrayOf(
             charArrayOf('5', '3', '-', '-', '7', '-', '-', '-', '-'),
             charArrayOf('6', '-', '-', '1', '-', '-', '-', '-', '-'),
@@ -37,7 +36,7 @@ fun main(){
     )
 
     check(
-        name = "a board that has a cell that contains anything but 1-9 digit should return false",
+        name = "when board contains non-digit characters, it should return false",
         result = isValidSudoku(board = arrayOf(
             charArrayOf('5', 'a', '-', '-', '7', '-', '-', '-', '-'),
             charArrayOf('6', '-', '-', '1', '9', '5', '-', '-', '-'),
@@ -52,8 +51,27 @@ fun main(){
         correctResult = false
     )
 
+
+
+
     check(
-        name = "valid complete sudoku board should return true",
+        name = "when board contains numbers less than 1 or greater than 9, it should return false",
+        result = isValidSudoku(board = arrayOf(
+            charArrayOf('5', '3', '-', '-', '7', '-', '-', '-', '-'),
+            charArrayOf('0', '-', '-', '1', '9', '5', '-', '-', '-'),
+            charArrayOf('-', '9', '8', '-', '-', '-', '-', '6', '-'),
+            charArrayOf('8', '-', '-', '-', '6', '-', '-', '-', '3'),
+            charArrayOf('4', '-', '-', '8', '-', '3', '-', '-', '1'),
+            charArrayOf('7', '-', '-', '-', '2', '-', '-', '-', '6'),
+            charArrayOf('-', '6', '-', '-', '-', '-', '2', '8', '-'),
+            charArrayOf('-', '-', '-', '4', '1', '9', '-', '-', '5'),
+            charArrayOf('-', '-', '-', '-', '8', '-', '-', '7', '9')
+        )),
+        correctResult = false
+    )
+
+    check(
+        name = "when board is a valid and complete sudoku, it should return true",
         result = isValidSudoku(board = arrayOf(
                 charArrayOf('5', '3', '4', '6', '7', '8', '9', '1', '2'),
                 charArrayOf('6', '7', '2', '1', '9', '5', '3', '4', '8'),
@@ -69,7 +87,7 @@ fun main(){
     )
 
     check(
-        name = "valid incomplete sudoku board should return true",
+        name = "when board is a valid and incomplete sudoku, it should return true",
         result = isValidSudoku(board = arrayOf(
             charArrayOf('5', '3', '-', '-', '7', '-', '-', '-', '-'),
             charArrayOf('6', '-', '-', '1', '9', '5', '-', '-', '-'),
@@ -85,7 +103,7 @@ fun main(){
     )
 
     check(
-        name = "board with duplicate in row should return false",
+        name = "when board has duplicate in a row, it should return false",
         result = isValidSudoku(board = arrayOf(
             charArrayOf('5', '3', '5', '-', '7', '-', '-', '-', '-'),
             charArrayOf('6', '-', '-', '1', '9', '5', '-', '-', '-'),
@@ -101,7 +119,7 @@ fun main(){
     )
 
     check(
-        name = "board with duplicate in column should return false",
+        name = "when board has duplicate in a column, it should return false",
         result = isValidSudoku(board = arrayOf(
             charArrayOf('5', '3', '-', '-', '7', '-', '-', '-', '-'),
             charArrayOf('6', '-', '-', '1', '9', '5', '-', '-', '-'),
@@ -117,7 +135,7 @@ fun main(){
     )
 
     check(
-        name = "board with duplicate in 3x3 subgrid should return false",
+        name = "when board has duplicate in a subgrid, it should return false",
         result = isValidSudoku(board = arrayOf(
             charArrayOf('5', '3', '-', '-', '7', '-', '-', '-', '-'),
             charArrayOf('6', '5', '-', '1', '9', '5', '-', '-', '-'),
